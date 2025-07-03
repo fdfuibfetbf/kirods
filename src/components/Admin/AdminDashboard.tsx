@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FileText, MessageSquare, TrendingUp, Activity, Clock, Tag, Eye, Mail } from 'lucide-react';
+import { FileText, MessageSquare, TrendingUp, Activity, Clock, Tag, Eye, Mail, Globe } from 'lucide-react';
 import { useArticles } from '../../hooks/useArticles';
 import { useCategories } from '../../hooks/useCategories';
 import ArticleManagement from './ArticleManagement';
@@ -10,6 +10,7 @@ import SMTPSettings from './SMTPSettings';
 import EmailManagement from './EmailManagement';
 import AdminProfile from './AdminProfile';
 import AdminSidebar from './AdminSidebar';
+import SitemapGenerator from '../SEO/SitemapGenerator';
 
 interface AdminDashboardProps {
   onLogout: () => void;
@@ -141,10 +142,10 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
           <div className="w-10 h-10 bg-primary-50 rounded-xl flex items-center justify-center">
             <FileText className="h-5 w-5 text-primary-600" />
           </div>
-          <h3 className="text-xl font-semibold text-gray-900">Content & Community Management</h3>
+          <h3 className="text-xl font-semibold text-gray-900">Content & SEO Management</h3>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
           <div className="bg-primary-50 rounded-xl p-6 text-center">
             <div className="text-2xl font-bold text-primary-600 mb-1">📝</div>
             <div className="text-sm font-medium text-gray-900 mb-1">Article Management</div>
@@ -174,6 +175,12 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
             <div className="text-sm font-medium text-gray-900 mb-1">SMTP Configuration</div>
             <div className="text-xs text-gray-600">Email server setup</div>
           </div>
+
+          <div className="bg-indigo-50 rounded-xl p-6 text-center">
+            <div className="text-2xl font-bold text-indigo-600 mb-1">🔍</div>
+            <div className="text-sm font-medium text-gray-900 mb-1">SEO & Indexing</div>
+            <div className="text-xs text-gray-600">Search engine optimization</div>
+          </div>
         </div>
       </div>
     </div>
@@ -188,6 +195,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
       case 'comments': return <CommentManagement />;
       case 'email': return <EmailManagement />;
       case 'smtp': return <SMTPSettings />;
+      case 'seo': return <SitemapGenerator />;
       case 'profile': return <AdminProfile />;
       default: return renderOverview();
     }

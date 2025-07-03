@@ -11,7 +11,8 @@ import {
   ChevronLeft,
   ChevronRight,
   Settings,
-  Mail
+  Mail,
+  Globe
 } from 'lucide-react';
 
 interface AdminSidebarProps {
@@ -37,6 +38,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({
     { id: 'comments', label: 'Comments', icon: MessageSquare },
     { id: 'email', label: 'Email Management', icon: Mail },
     { id: 'smtp', label: 'SMTP Settings', icon: Settings },
+    { id: 'seo', label: 'SEO & Indexing', icon: Globe },
     { id: 'profile', label: 'Profile', icon: User },
   ];
 

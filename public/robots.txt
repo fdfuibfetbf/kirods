@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://localhost:5173/sitemap.xml
+Sitemap: https://localhost:5173/sitemap-articles.xml
+Sitemap: https://localhost:5173/sitemap-categories.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Disallow admin areas
+Disallow: /area51/
+Disallow: /admin/
+Disallow: /api/
+
+# Allow important pages
+Allow: /
+Allow: /article/
+Allow: /category/
+
+# Block common bot traps
+Disallow: /search?
+Disallow: /*?utm_*
+Disallow: /*?ref=*
+Disallow: /*?source=*
