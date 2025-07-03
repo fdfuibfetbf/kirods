@@ -19,7 +19,10 @@ import {
   Smartphone,
   Wifi,
   Search,
-  X
+  X,
+  ArrowRight,
+  Star,
+  TrendingUp
 } from 'lucide-react';
 import { Category } from '../../types';
 
@@ -34,7 +37,7 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
   const [filteredSuggestions, setFilteredSuggestions] = useState<any[]>([]);
   const searchRef = useRef<HTMLDivElement>(null);
 
-  // Predefined categories with icons and descriptions - all using green gradient colors
+  // Predefined categories with enhanced styling
   const predefinedCategories = [
     {
       name: 'Apps',
@@ -42,7 +45,9 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       icon: Smartphone,
       color: 'text-primary-600',
       bgColor: 'bg-gradient-to-br from-primary-50 to-primary-100',
-      hoverColor: 'hover:from-primary-100 hover:to-primary-200'
+      hoverColor: 'hover:from-primary-100 hover:to-primary-200',
+      borderColor: 'border-primary-200',
+      shadowColor: 'hover:shadow-primary-500/25'
     },
     {
       name: 'WordPress',
@@ -50,7 +55,9 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       icon: FileText,
       color: 'text-primary-700',
       bgColor: 'bg-gradient-to-br from-primary-100 to-primary-200',
-      hoverColor: 'hover:from-primary-200 hover:to-primary-300'
+      hoverColor: 'hover:from-primary-200 hover:to-primary-300',
+      borderColor: 'border-primary-300',
+      shadowColor: 'hover:shadow-primary-500/30'
     },
     {
       name: 'Domain Vault',
@@ -58,7 +65,9 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       icon: Shield,
       color: 'text-primary-600',
       bgColor: 'bg-gradient-to-br from-primary-50 to-primary-100',
-      hoverColor: 'hover:from-primary-100 hover:to-primary-200'
+      hoverColor: 'hover:from-primary-100 hover:to-primary-200',
+      borderColor: 'border-primary-200',
+      shadowColor: 'hover:shadow-primary-500/25'
     },
     {
       name: 'General & Support',
@@ -66,7 +75,9 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       icon: Headphones,
       color: 'text-primary-700',
       bgColor: 'bg-gradient-to-br from-primary-100 to-primary-200',
-      hoverColor: 'hover:from-primary-200 hover:to-primary-300'
+      hoverColor: 'hover:from-primary-200 hover:to-primary-300',
+      borderColor: 'border-primary-300',
+      shadowColor: 'hover:shadow-primary-500/30'
     },
     {
       name: 'Checkout & Billing',
@@ -74,7 +85,9 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       icon: CreditCard,
       color: 'text-primary-600',
       bgColor: 'bg-gradient-to-br from-primary-50 to-primary-100',
-      hoverColor: 'hover:from-primary-100 hover:to-primary-200'
+      hoverColor: 'hover:from-primary-100 hover:to-primary-200',
+      borderColor: 'border-primary-200',
+      shadowColor: 'hover:shadow-primary-500/25'
     },
     {
       name: 'Domains',
@@ -82,7 +95,9 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       icon: Globe,
       color: 'text-primary-700',
       bgColor: 'bg-gradient-to-br from-primary-100 to-primary-200',
-      hoverColor: 'hover:from-primary-200 hover:to-primary-300'
+      hoverColor: 'hover:from-primary-200 hover:to-primary-300',
+      borderColor: 'border-primary-300',
+      shadowColor: 'hover:shadow-primary-500/30'
     },
     {
       name: 'Domain Privacy Protection',
@@ -90,7 +105,9 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       icon: Lock,
       color: 'text-primary-600',
       bgColor: 'bg-gradient-to-br from-primary-50 to-primary-100',
-      hoverColor: 'hover:from-primary-100 hover:to-primary-200'
+      hoverColor: 'hover:from-primary-100 hover:to-primary-200',
+      borderColor: 'border-primary-200',
+      shadowColor: 'hover:shadow-primary-500/25'
     },
     {
       name: 'Domain Transfers',
@@ -98,7 +115,9 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       icon: Database,
       color: 'text-primary-700',
       bgColor: 'bg-gradient-to-br from-primary-100 to-primary-200',
-      hoverColor: 'hover:from-primary-200 hover:to-primary-300'
+      hoverColor: 'hover:from-primary-200 hover:to-primary-300',
+      borderColor: 'border-primary-300',
+      shadowColor: 'hover:shadow-primary-500/30'
     },
     {
       name: 'Hosting',
@@ -106,7 +125,9 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       icon: Server,
       color: 'text-primary-600',
       bgColor: 'bg-gradient-to-br from-primary-50 to-primary-100',
-      hoverColor: 'hover:from-primary-100 hover:to-primary-200'
+      hoverColor: 'hover:from-primary-100 hover:to-primary-200',
+      borderColor: 'border-primary-200',
+      shadowColor: 'hover:shadow-primary-500/25'
     },
     {
       name: 'Email Service',
@@ -114,7 +135,9 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       icon: Mail,
       color: 'text-primary-700',
       bgColor: 'bg-gradient-to-br from-primary-100 to-primary-200',
-      hoverColor: 'hover:from-primary-200 hover:to-primary-300'
+      hoverColor: 'hover:from-primary-200 hover:to-primary-300',
+      borderColor: 'border-primary-300',
+      shadowColor: 'hover:shadow-primary-500/30'
     },
     {
       name: 'SSL Certificates',
@@ -122,7 +145,9 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       icon: Shield,
       color: 'text-primary-600',
       bgColor: 'bg-gradient-to-br from-primary-50 to-primary-100',
-      hoverColor: 'hover:from-primary-100 hover:to-primary-200'
+      hoverColor: 'hover:from-primary-100 hover:to-primary-200',
+      borderColor: 'border-primary-200',
+      shadowColor: 'hover:shadow-primary-500/25'
     },
     {
       name: 'My Account',
@@ -130,7 +155,9 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       icon: Users,
       color: 'text-primary-700',
       bgColor: 'bg-gradient-to-br from-primary-100 to-primary-200',
-      hoverColor: 'hover:from-primary-200 hover:to-primary-300'
+      hoverColor: 'hover:from-primary-200 hover:to-primary-300',
+      borderColor: 'border-primary-300',
+      shadowColor: 'hover:shadow-primary-500/30'
     },
     {
       name: 'Affiliates',
@@ -138,7 +165,9 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       icon: Users,
       color: 'text-primary-600',
       bgColor: 'bg-gradient-to-br from-primary-50 to-primary-100',
-      hoverColor: 'hover:from-primary-100 hover:to-primary-200'
+      hoverColor: 'hover:from-primary-100 hover:to-primary-200',
+      borderColor: 'border-primary-200',
+      shadowColor: 'hover:shadow-primary-500/25'
     },
     {
       name: 'API & Resellers',
@@ -146,7 +175,9 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       icon: Settings,
       color: 'text-primary-700',
       bgColor: 'bg-gradient-to-br from-primary-100 to-primary-200',
-      hoverColor: 'hover:from-primary-200 hover:to-primary-300'
+      hoverColor: 'hover:from-primary-200 hover:to-primary-300',
+      borderColor: 'border-primary-300',
+      shadowColor: 'hover:shadow-primary-500/30'
     },
     {
       name: 'Legacy Products',
@@ -154,7 +185,9 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       icon: HardDrive,
       color: 'text-primary-600',
       bgColor: 'bg-gradient-to-br from-primary-50 to-primary-100',
-      hoverColor: 'hover:from-primary-100 hover:to-primary-200'
+      hoverColor: 'hover:from-primary-100 hover:to-primary-200',
+      borderColor: 'border-primary-200',
+      shadowColor: 'hover:shadow-primary-500/25'
     },
     {
       name: 'PremiumDNS',
@@ -162,7 +195,9 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       icon: Wifi,
       color: 'text-primary-700',
       bgColor: 'bg-gradient-to-br from-primary-100 to-primary-200',
-      hoverColor: 'hover:from-primary-200 hover:to-primary-300'
+      hoverColor: 'hover:from-primary-200 hover:to-primary-300',
+      borderColor: 'border-primary-300',
+      shadowColor: 'hover:shadow-primary-500/30'
     },
     {
       name: 'FastVPN',
@@ -170,11 +205,13 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       icon: Shield,
       color: 'text-primary-600',
       bgColor: 'bg-gradient-to-br from-primary-50 to-primary-100',
-      hoverColor: 'hover:from-primary-100 hover:to-primary-200'
+      hoverColor: 'hover:from-primary-100 hover:to-primary-200',
+      borderColor: 'border-primary-200',
+      shadowColor: 'hover:shadow-primary-500/25'
     }
   ];
 
-  // Sample search suggestions
+  // Enhanced search suggestions
   const searchSuggestions = [
     { type: 'category', name: 'WordPress Installation', category: 'WordPress' },
     { type: 'category', name: 'Domain Setup', category: 'Domains' },
@@ -201,7 +238,7 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
       const filtered = searchSuggestions.filter(suggestion =>
         suggestion.name.toLowerCase().includes(value.toLowerCase()) ||
         suggestion.category.toLowerCase().includes(value.toLowerCase())
-      ).slice(0, 8); // Limit to 8 suggestions
+      ).slice(0, 8);
       
       setFilteredSuggestions(filtered);
       setShowDropdown(true);
@@ -216,7 +253,6 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
     setSearchQuery(suggestion.name);
     setShowDropdown(false);
     
-    // Find and select the related category
     const relatedCategory = categories.find(cat => 
       cat.name.toLowerCase().includes(suggestion.category.toLowerCase()) ||
       suggestion.category.toLowerCase().includes(cat.name.toLowerCase())
@@ -230,7 +266,6 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
   // Handle search submission
   const handleSearchSubmit = () => {
     if (searchQuery.trim()) {
-      // Try to find a matching category
       const matchingCategory = categories.find(cat =>
         cat.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         cat.description?.toLowerCase().includes(searchQuery.toLowerCase())
@@ -262,77 +297,69 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Merge predefined categories with actual categories from database
-  const getCategoryData = (categoryName: string) => {
-    return predefinedCategories.find(cat => 
-      cat.name.toLowerCase().includes(categoryName.toLowerCase()) ||
-      categoryName.toLowerCase().includes(cat.name.toLowerCase())
-    ) || {
-      name: categoryName,
-      description: 'Comprehensive guides and tutorials',
-      icon: FileText,
-      color: 'text-primary-600',
-      bgColor: 'bg-gradient-to-br from-primary-50 to-primary-100',
-      hoverColor: 'hover:from-primary-100 hover:to-primary-200'
-    };
-  };
-
   return (
-    <div className="py-16">
-      {/* Smart Search Bar with Dropdown */}
-      <div className="max-w-2xl mx-auto mb-12" ref={searchRef}>
+    <div className="py-20">
+      {/* Enhanced Search Bar */}
+      <div className="max-w-3xl mx-auto mb-16" ref={searchRef}>
         <div className="relative">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-          <input
-            type="text"
-            placeholder="Search knowledgebase"
-            value={searchQuery}
-            onChange={(e) => handleSearchChange(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && handleSearchSubmit()}
-            className="w-full pl-12 pr-20 py-4 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg shadow-sm transition-all duration-200"
-          />
-          
-          {/* Clear button */}
-          {searchQuery && (
-            <button
-              onClick={clearSearch}
-              className="absolute right-16 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          )}
-          
-          {/* Search button */}
-          <button 
-            onClick={handleSearchSubmit}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-primary text-white px-6 py-2 rounded-lg hover:shadow-green transition-all duration-200 font-medium"
-          >
-            Search
-          </button>
+          <div className="absolute inset-0 bg-gradient-primary rounded-3xl blur-xl opacity-20"></div>
+          <div className="relative bg-white rounded-3xl shadow-2xl border border-gray-200/50 p-2">
+            <div className="flex items-center">
+              <Search className="absolute left-6 h-6 w-6 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search knowledge base..."
+                value={searchQuery}
+                onChange={(e) => handleSearchChange(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleSearchSubmit()}
+                className="w-full pl-16 pr-24 py-5 text-lg bg-transparent border-0 focus:outline-none focus:ring-0 placeholder-gray-400"
+              />
+              
+              {searchQuery && (
+                <button
+                  onClick={clearSearch}
+                  className="absolute right-20 text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-lg hover:bg-gray-100"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              )}
+              
+              <button 
+                onClick={handleSearchSubmit}
+                className="bg-gradient-primary text-white px-8 py-3 rounded-2xl hover:shadow-green transition-all duration-300 font-semibold flex items-center space-x-2 group"
+              >
+                <span>Search</span>
+                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+              </button>
+            </div>
+          </div>
 
-          {/* Search Dropdown */}
+          {/* Enhanced Search Dropdown */}
           {showDropdown && filteredSuggestions.length > 0 && (
-            <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg z-50 max-h-80 overflow-y-auto">
-              <div className="p-2">
-                <div className="text-xs font-medium text-gray-500 px-3 py-2 border-b border-gray-100">
+            <div className="absolute top-full left-0 right-0 mt-4 bg-white border border-gray-200 rounded-2xl shadow-2xl z-50 max-h-80 overflow-y-auto">
+              <div className="p-3">
+                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-4 py-3 border-b border-gray-100">
                   Suggested searches
                 </div>
                 {filteredSuggestions.map((suggestion, index) => (
                   <button
                     key={index}
                     onClick={() => handleSuggestionSelect(suggestion)}
-                    className="w-full text-left px-3 py-3 hover:bg-primary-50 rounded-lg transition-colors group"
+                    className="w-full text-left px-4 py-4 hover:bg-primary-50 rounded-xl transition-all duration-200 group"
                   >
-                    <div className="flex items-center space-x-3">
-                      <Search className="h-4 w-4 text-gray-400 group-hover:text-primary-500" />
+                    <div className="flex items-center space-x-4">
+                      <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center group-hover:bg-primary-200 transition-colors duration-200">
+                        <Search className="h-5 w-5 text-primary-600" />
+                      </div>
                       <div className="flex-1">
-                        <div className="text-sm font-medium text-gray-900 group-hover:text-primary-700">
+                        <div className="text-sm font-semibold text-gray-900 group-hover:text-primary-700 transition-colors duration-200">
                           {suggestion.name}
                         </div>
-                        <div className="text-xs text-primary-600 group-hover:text-primary-700">
+                        <div className="text-xs text-primary-600 group-hover:text-primary-700 transition-colors duration-200">
                           in {suggestion.category}
                         </div>
                       </div>
+                      <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all duration-200" />
                     </div>
                   </button>
                 ))}
@@ -342,10 +369,9 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
         </div>
       </div>
 
-      {/* Categories Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+      {/* Enhanced Categories Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 max-w-7xl mx-auto">
         {predefinedCategories.map((categoryData, index) => {
-          // Find matching category from database
           const dbCategory = categories.find(cat => 
             cat.name.toLowerCase().includes(categoryData.name.toLowerCase()) ||
             categoryData.name.toLowerCase().includes(cat.name.toLowerCase())
@@ -358,67 +384,84 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
             <div
               key={index}
               onClick={() => dbCategory && onCategorySelect(dbCategory.id)}
-              className={`group cursor-pointer bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-6 border border-gray-100 hover:border-primary-200 ${
+              className={`group cursor-pointer bg-white rounded-2xl shadow-soft hover:shadow-large transition-all duration-500 p-8 border-2 ${categoryData.borderColor} ${categoryData.hoverColor} ${categoryData.shadowColor} hover:scale-105 hover:-translate-y-2 ${
                 !dbCategory ? 'opacity-60 cursor-not-allowed' : ''
               }`}
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="text-center">
-                {/* Icon */}
-                <div className={`w-12 h-12 ${categoryData.bgColor} rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all duration-300 ${categoryData.hoverColor}`}>
-                  <IconComponent className={`h-6 w-6 ${categoryData.color}`} />
+                {/* Enhanced Icon */}
+                <div className={`w-16 h-16 ${categoryData.bgColor} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500 ${categoryData.hoverColor} shadow-soft group-hover:shadow-medium`}>
+                  <IconComponent className={`h-8 w-8 ${categoryData.color} group-hover:scale-110 transition-transform duration-300`} />
                 </div>
 
-                {/* Content */}
-                <h3 className="text-sm font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
+                {/* Enhanced Content */}
+                <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors duration-300">
                   {categoryData.name}
                 </h3>
                 
-                <p className="text-xs text-gray-500 mb-3 leading-relaxed">
-                  View section →
+                <p className="text-sm text-gray-600 mb-4 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                  {categoryData.description}
                 </p>
 
-                {/* Article Count */}
+                {/* Enhanced Article Count */}
                 {dbCategory && (
-                  <div className="text-xs text-primary-600 font-medium">
-                    {articleCount} {articleCount === 1 ? 'article' : 'articles'}
+                  <div className="flex items-center justify-center space-x-2 text-primary-600 font-semibold group-hover:text-primary-700 transition-colors duration-300">
+                    <FileText className="h-4 w-4" />
+                    <span className="text-sm">
+                      {articleCount} {articleCount === 1 ? 'article' : 'articles'}
+                    </span>
                   </div>
                 )}
+
+                {/* Hover Arrow */}
+                <div className="mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                  <ArrowRight className="h-5 w-5 text-primary-600 mx-auto" />
+                </div>
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* Recent Articles Section */}
-      <div className="mt-16 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      {/* Enhanced Bottom Section */}
+      <div className="mt-24 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Recent Articles */}
-          <div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-6">Recent Articles</h2>
-            <div className="space-y-4">
+          <div className="bg-white rounded-3xl shadow-soft p-10 border border-gray-100">
+            <div className="flex items-center space-x-3 mb-8">
+              <div className="w-12 h-12 bg-primary-50 rounded-2xl flex items-center justify-center">
+                <TrendingUp className="h-6 w-6 text-primary-600" />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900">Recent Articles</h2>
+            </div>
+            <div className="space-y-6">
               {categories.slice(0, 5).map((category, index) => (
-                <div key={category.id} className="flex items-start space-x-3 p-3 hover:bg-primary-50 rounded-lg transition-colors">
-                  <div className="w-2 h-2 bg-primary-500 rounded-full mt-2 flex-shrink-0"></div>
+                <div key={category.id} className="flex items-start space-x-4 p-4 hover:bg-primary-50 rounded-2xl transition-all duration-300 group cursor-pointer" onClick={() => onCategorySelect(category.id)}>
+                  <div className="w-3 h-3 bg-primary-500 rounded-full mt-2 flex-shrink-0 group-hover:scale-125 transition-transform duration-200"></div>
                   <div className="flex-1">
-                    <button
-                      onClick={() => onCategorySelect(category.id)}
-                      className="text-primary-600 hover:text-primary-700 text-sm font-medium text-left"
-                    >
+                    <h3 className="text-primary-600 hover:text-primary-700 font-semibold text-base group-hover:translate-x-1 transition-all duration-200">
                       {category.name}
-                    </button>
-                    <div className="text-xs text-primary-600 mt-1">
+                    </h3>
+                    <p className="text-sm text-gray-600 mt-1 group-hover:text-gray-700 transition-colors duration-200">
                       {category.description || 'Category guides and tutorials'}
-                    </div>
+                    </p>
                   </div>
+                  <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all duration-200" />
                 </div>
               ))}
             </div>
           </div>
 
           {/* Frequently Asked Questions */}
-          <div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-6">Frequently Asked Questions</h2>
-            <div className="space-y-4">
+          <div className="bg-white rounded-3xl shadow-soft p-10 border border-gray-100">
+            <div className="flex items-center space-x-3 mb-8">
+              <div className="w-12 h-12 bg-primary-50 rounded-2xl flex items-center justify-center">
+                <Star className="h-6 w-6 text-primary-600" />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900">Popular Questions</h2>
+            </div>
+            <div className="space-y-6">
               {[
                 { question: "How to generate CSR (Certificate Signing Request) Code", category: "SSL Certificates" },
                 { question: "How to set up a URL redirect for a domain", category: "Domains" },
@@ -426,16 +469,17 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onCategorySelec
                 { question: "How to set up Free Email Forwarding", category: "Email service" },
                 { question: "How do I activate an SSL certificate", category: "SSL Certificates" }
               ].map((faq, index) => (
-                <div key={index} className="flex items-start space-x-3 p-3 hover:bg-primary-50 rounded-lg transition-colors">
-                  <div className="w-2 h-2 bg-primary-500 rounded-full mt-2 flex-shrink-0"></div>
+                <div key={index} className="flex items-start space-x-4 p-4 hover:bg-primary-50 rounded-2xl transition-all duration-300 group cursor-pointer">
+                  <div className="w-3 h-3 bg-primary-500 rounded-full mt-2 flex-shrink-0 group-hover:scale-125 transition-transform duration-200"></div>
                   <div className="flex-1">
-                    <button className="text-primary-600 hover:text-primary-700 text-sm font-medium text-left">
+                    <h3 className="text-primary-600 hover:text-primary-700 font-semibold text-base group-hover:translate-x-1 transition-all duration-200">
                       {faq.question}
-                    </button>
-                    <div className="text-xs text-primary-600 mt-1">
+                    </h3>
+                    <p className="text-sm text-gray-600 mt-1 group-hover:text-gray-700 transition-colors duration-200">
                       {faq.category}
-                    </div>
+                    </p>
                   </div>
+                  <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all duration-200" />
                 </div>
               ))}
             </div>

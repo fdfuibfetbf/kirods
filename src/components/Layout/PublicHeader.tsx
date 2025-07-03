@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, User, Shield, Menu, X, Home, HelpCircle } from 'lucide-react';
+import { Search, User, Shield, Menu, X, Home, HelpCircle, ExternalLink, Globe } from 'lucide-react';
 
 interface PublicHeaderProps {
   searchQuery: string;
@@ -57,64 +57,76 @@ const PublicHeader: React.FC<PublicHeaderProps> = ({
   }, [secretCode]);
 
   return (
-    <header className="bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-200 sticky top-0 z-40">
+    <header className="bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200/50 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
+          <Link to="/" className="flex items-center space-x-4 group">
             <div className="relative">
-              <div className="absolute inset-0 bg-primary-500 rounded-lg blur opacity-75 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative bg-primary-500 p-2 rounded-lg">
-                <Shield className="h-6 w-6 text-white" />
+              <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300"></div>
+              <div className="relative bg-gradient-primary p-3 rounded-2xl shadow-green group-hover:scale-105 transition-all duration-300">
+                <Shield className="h-8 w-8 text-white" />
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-gray-900">
+              <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
                 Kirods Hosting
               </span>
-              <span className="text-xs text-gray-500 -mt-1">Knowledge Base</span>
+              <span className="text-sm text-gray-500 -mt-1 font-medium">Knowledge Base</span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
+            <a
+              href="https://kirods.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 font-medium transition-all duration-300 relative group px-4 py-2 rounded-xl hover:bg-primary-50"
+            >
+              <Globe className="h-5 w-5" />
+              <span>Kirods.com</span>
+              <ExternalLink className="h-4 w-4 opacity-60" />
+              <span className="absolute -bottom-1 left-4 w-0 h-0.5 bg-primary-500 group-hover:w-[calc(100%-2rem)] transition-all duration-300"></span>
+            </a>
+
             <Link
               to="/"
-              className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 font-medium transition-colors relative group"
+              className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 font-medium transition-all duration-300 relative group px-4 py-2 rounded-xl hover:bg-primary-50"
             >
-              <Home className="h-4 w-4" />
-              <span>Home</span>
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300"></span>
+              <Home className="h-5 w-5" />
+              <span>Knowledge Base</span>
+              <span className="absolute -bottom-1 left-4 w-0 h-0.5 bg-primary-500 group-hover:w-[calc(100%-2rem)] transition-all duration-300"></span>
             </Link>
             
             {/* Hidden Admin Access - only shows when secret code is entered */}
             {showAdminAccess && (
               <Link
                 to="/area51"
-                className="flex items-center space-x-2 text-red-600 hover:text-red-700 font-medium transition-colors relative group animate-pulse"
+                className="flex items-center space-x-2 text-red-600 hover:text-red-700 font-medium transition-all duration-300 relative group animate-pulse px-4 py-2 rounded-xl hover:bg-red-50"
               >
-                <Shield className="h-4 w-4" />
+                <Shield className="h-5 w-5" />
                 <span>🔒 Area 51</span>
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-4 w-0 h-0.5 bg-red-500 group-hover:w-[calc(100%-2rem)] transition-all duration-300"></span>
               </Link>
             )}
           </nav>
 
           {/* Search Bar */}
-          <div className="flex-1 max-w-md mx-8 hidden sm:block">
+          <div className="flex-1 max-w-lg mx-8 hidden sm:block">
             <div className="relative group">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 group-focus-within:text-primary-500 transition-colors" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-primary-500 transition-colors duration-300" />
               <input
                 type="text"
                 placeholder="Search knowledge base..."
                 value={searchQuery}
                 onChange={(e) => onSearchChange(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent focus:bg-white transition-all duration-200 text-sm placeholder-gray-400"
+                className="w-full pl-12 pr-4 py-4 bg-gray-50/80 border border-gray-200/50 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent focus:bg-white transition-all duration-300 text-sm placeholder-gray-400 shadow-soft hover:shadow-medium"
               />
               {searchQuery && (
                 <button
                   onClick={() => onSearchChange('')}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1 rounded-lg hover:bg-gray-100 transition-all duration-200"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -124,18 +136,18 @@ const PublicHeader: React.FC<PublicHeaderProps> = ({
 
           {/* Actions */}
           <div className="flex items-center space-x-3">
-            <button className="p-3 bg-gray-100 text-gray-600 hover:bg-primary-50 hover:text-primary-600 rounded-xl transition-all duration-200">
-              <HelpCircle className="h-5 w-5" />
+            <button className="p-3 bg-gray-50/80 text-gray-600 hover:bg-primary-50 hover:text-primary-600 rounded-2xl transition-all duration-300 shadow-soft hover:shadow-medium group">
+              <HelpCircle className="h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
             </button>
 
-            <button className="p-3 bg-gray-100 text-gray-600 hover:bg-primary-50 hover:text-primary-600 rounded-xl transition-all duration-200">
-              <User className="h-5 w-5" />
+            <button className="p-3 bg-gray-50/80 text-gray-600 hover:bg-primary-50 hover:text-primary-600 rounded-2xl transition-all duration-300 shadow-soft hover:shadow-medium group">
+              <User className="h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
             </button>
 
             {/* Mobile menu button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-3 bg-gray-100 text-gray-600 hover:bg-primary-50 hover:text-primary-600 rounded-xl transition-all duration-200"
+              className="md:hidden p-3 bg-gray-50/80 text-gray-600 hover:bg-primary-50 hover:text-primary-600 rounded-2xl transition-all duration-300 shadow-soft hover:shadow-medium"
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -144,7 +156,7 @@ const PublicHeader: React.FC<PublicHeaderProps> = ({
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200 animate-slide-up">
+          <div className="md:hidden py-6 border-t border-gray-200/50 animate-slide-up">
             <div className="space-y-4">
               {/* Mobile Search */}
               <div className="relative">
@@ -154,30 +166,42 @@ const PublicHeader: React.FC<PublicHeaderProps> = ({
                   placeholder="Search knowledge base..."
                   value={searchQuery}
                   onChange={(e) => onSearchChange(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 text-sm"
+                  className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 text-sm"
                 />
               </div>
               
               {/* Mobile Navigation */}
               <nav className="space-y-2">
-                <Link
-                  to="/"
-                  className="flex items-center space-x-2 px-4 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors"
+                <a
+                  href="https://kirods.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-3 px-4 py-4 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-2xl transition-all duration-300"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <Home className="h-4 w-4" />
-                  <span>Home</span>
+                  <Globe className="h-5 w-5" />
+                  <span className="font-medium">Kirods.com</span>
+                  <ExternalLink className="h-4 w-4 opacity-60" />
+                </a>
+
+                <Link
+                  to="/"
+                  className="flex items-center space-x-3 px-4 py-4 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-2xl transition-all duration-300"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Home className="h-5 w-5" />
+                  <span className="font-medium">Knowledge Base</span>
                 </Link>
                 
                 {/* Hidden Admin Access for Mobile */}
                 {showAdminAccess && (
                   <Link
                     to="/area51"
-                    className="flex items-center space-x-2 px-4 py-3 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors animate-pulse"
+                    className="flex items-center space-x-3 px-4 py-4 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-2xl transition-all duration-300 animate-pulse"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <Shield className="h-4 w-4" />
-                    <span>🔒 Area 51</span>
+                    <Shield className="h-5 w-5" />
+                    <span className="font-medium">🔒 Area 51</span>
                   </Link>
                 )}
               </nav>
