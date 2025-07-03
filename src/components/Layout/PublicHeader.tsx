@@ -140,9 +140,14 @@ const PublicHeader: React.FC<PublicHeaderProps> = ({
               <HelpCircle className="h-4 w-4 group-hover:scale-110 transition-transform duration-200" />
             </button>
 
-            <button className="p-2 bg-gray-50/80 text-gray-600 hover:bg-primary-50 hover:text-primary-600 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md group">
+            <a 
+              href="https://kirods.com/login" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="p-2 bg-gray-50/80 text-gray-600 hover:bg-primary-50 hover:text-primary-600 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md group"
+            >
               <User className="h-4 w-4 group-hover:scale-110 transition-transform duration-200" />
-            </button>
+            </a>
 
             {/* Mobile menu button */}
             <button
@@ -192,6 +197,17 @@ const PublicHeader: React.FC<PublicHeaderProps> = ({
                   <Home className="h-4 w-4" />
                   <span className="font-medium">Knowledge Base</span>
                 </Link>
+                
+                <a
+                  href="https://kirods.com/login"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-all duration-300"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <User className="h-4 w-4" />
+                  <span className="font-medium">Login</span>
+                </a>
                 
                 {/* Hidden Admin Access for Mobile */}
                 {showAdminAccess && (
