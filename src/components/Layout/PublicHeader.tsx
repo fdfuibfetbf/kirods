@@ -69,9 +69,14 @@ const PublicHeader: React.FC<PublicHeaderProps> = ({
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-bold bg-gradient-primary bg-clip-text text-transparent">
+              <a 
+                href="https://kirods.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-lg font-bold bg-gradient-primary bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
+              >
                 Kirods Hosting
-              </span>
+              </a>
               <span className="text-xs text-gray-500 -mt-1 font-medium">Knowledge Base</span>
             </div>
           </Link>
