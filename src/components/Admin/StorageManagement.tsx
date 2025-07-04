@@ -1,39 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  FolderOpen, 
-  Upload, 
-  Trash2, 
-  File, 
-  Image, 
-  Video, 
-  FileText, 
-  FilePlus, 
-  FolderPlus, 
-  RefreshCw, 
-  Link, 
-  Copy, 
-  CheckCircle, 
-  AlertCircle, 
-  X, 
-  Loader, 
-  Lock, 
-  Unlock, 
-  Search, 
-  Filter, 
-  MoreVertical, 
-  Download, 
-  Edit, 
-  Eye, 
-  ArrowLeft, 
-  Database,
-  FileArchive,
-  FileAudio,
-  FileCode,
-  FilePdf,
-  FileSpreadsheet,
-  FileType,
-  FileX
-} from 'lucide-react';
+import { FolderOpen, Upload, Trash2, File, Image, Video, FileText, FilePlus, FolderPlus, RefreshCw, Link, Copy, CheckCircle, AlertCircle, X, Loader, Lock, Unlock, Search, Filter, MoreVertical, Download, Edit, Eye, ArrowLeft, Database, FileArchive, FileAudio, FileCode, File as FilePdf, FileSpreadsheet, FileType, FileX } from 'lucide-react';
 import { useStorage } from '../../hooks/useStorage';
 import { StorageFile, StorageBucket } from '../../types';
 
