@@ -10,13 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/storage-js": "^2.8.0",
     "@supabase/supabase-js": "^2.39.0",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-helmet-async": "^2.0.4",
     "react-router-dom": "^6.20.1",
-    "socket.io-client": "^4.7.4"
+    "socket.io-client": "^4.7.4",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",

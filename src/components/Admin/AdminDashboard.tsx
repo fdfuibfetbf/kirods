@@ -11,6 +11,7 @@ import EmailManagement from './EmailManagement';
 import AdminProfile from './AdminProfile';
 import AdminSidebar from './AdminSidebar';
 import SitemapGenerator from '../SEO/SitemapGenerator';
+import StorageManagement from './StorageManagement';
 
 interface AdminDashboardProps {
   onLogout: () => void;
@@ -196,6 +197,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
       case 'email': return <EmailManagement />;
       case 'smtp': return <SMTPSettings />;
       case 'seo': return <SitemapGenerator />;
+      case 'storage': return <StorageManagement />;
       case 'profile': return <AdminProfile />;
       default: return renderOverview();
     }

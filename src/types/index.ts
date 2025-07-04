@@ -118,6 +118,30 @@ export interface ChatMessage {
   created_at: string;
 }
 
+export interface StorageFile {
+  id: string;
+  name: string;
+  size: number;
+  type: string;
+  url: string;
+  path: string;
+  bucket: string;
+  created_at: string;
+  updated_at: string;
+  is_public: boolean;
+  metadata?: Record<string, any>;
+}
+
+export interface StorageBucket {
+  id: string;
+  name: string;
+  public: boolean;
+  created_at: string;
+  updated_at: string;
+  file_count: number;
+  size_bytes: number;
+}
+
 export interface AnalyticsData {
   totalViews: number;
   activeUsers: number;
