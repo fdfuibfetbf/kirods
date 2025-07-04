@@ -37,6 +37,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({
     { id: 'articles', label: 'Articles', icon: FileText },
     { id: 'categories', label: 'Categories', icon: Tag },
     { id: 'comments', label: 'Comments', icon: MessageSquare },
+    { id: 'blog', label: 'Blog', icon: FileText },
     { id: 'email', label: 'Email Management', icon: Mail },
     { id: 'smtp', label: 'SMTP Settings', icon: Settings },
     { id: 'seo', label: 'SEO & Indexing', icon: Globe },

@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import PublicLayout from './components/Layout/PublicLayout';
 import AdminLayout from './components/Layout/AdminLayout';
+import BlogList from './components/Blog/BlogList';
+import BlogPost from './components/Blog/BlogPost';
 import KnowledgeBase from './components/KnowledgeBase/KnowledgeBase';
 import AdminDashboard from './components/Admin/AdminDashboard';
 
@@ -17,6 +19,8 @@ function App() {
             </Route>
             <Route path="/*" element={<PublicLayout />}>
               <Route index element={<KnowledgeBase />} />
+              <Route path="blog" element={<BlogList />} />
+              <Route path="blog/:slug" element={<BlogPost />} />
             </Route>
           </Routes>
         </div>

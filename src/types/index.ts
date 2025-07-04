@@ -132,6 +132,35 @@ export interface StorageFile {
   metadata?: Record<string, any>;
 }
 
+export interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  content: string;
+  excerpt: string;
+  author_id: string;
+  author_name: string;
+  featured_image: string;
+  status: 'draft' | 'published' | 'archived';
+  tags: string[];
+  category_id: string | null;
+  category?: Category;
+  views: number;
+  created_at: string;
+  updated_at: string;
+  published_at: string | null;
+  // SEO fields
+  meta_title: string | null;
+  meta_description: string | null;
+  meta_keywords: string | null;
+  canonical_url: string | null;
+  og_title: string | null;
+  og_description: string | null;
+  og_image: string | null;
+  indexed_at: string | null;
+  indexing_status: string | null;
+}
+
 export interface StorageBucket {
   id: string;
   name: string;

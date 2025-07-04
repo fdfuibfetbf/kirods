@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, User, Shield, Menu, X, Home, HelpCircle, ExternalLink, Globe } from 'lucide-react';
+import { Search, User, Shield, Menu, X, Home, HelpCircle, ExternalLink, Globe, FileText } from 'lucide-react';
 
 interface PublicHeaderProps {
   searchQuery: string;
@@ -104,6 +104,15 @@ const PublicHeader: React.FC<PublicHeaderProps> = ({
               <span className="absolute -bottom-1 left-3 w-0 h-0.5 bg-primary-500 group-hover:w-[calc(100%-1.5rem)] transition-all duration-300"></span>
             </Link>
             
+            <Link
+              to="/blog"
+              className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 font-medium transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-primary-50"
+            >
+              <FileText className="h-4 w-4" />
+              <span>Blog</span>
+              <span className="absolute -bottom-1 left-3 w-0 h-0.5 bg-primary-500 group-hover:w-[calc(100%-1.5rem)] transition-all duration-300"></span>
+            </Link>
+            
             {/* Hidden Admin Access - only shows when secret code is entered */}
             {showAdminAccess && (
               <Link
@@ -201,6 +210,15 @@ const PublicHeader: React.FC<PublicHeaderProps> = ({
                 >
                   <Home className="h-4 w-4" />
                   <span className="font-medium">Knowledge Base</span>
+                </Link>
+                
+                <Link
+                  to="/blog"
+                  className="flex items-center space-x-2 px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-all duration-300"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <FileText className="h-4 w-4" />
+                  <span className="font-medium">Blog</span>
                 </Link>
                 
                 <a
